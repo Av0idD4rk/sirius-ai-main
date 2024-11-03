@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">BookAI</string>
+    <string name="title_activity_main">BookAI</string>
+    <string name="package_name">io.av0idD4rk.ailibrary</string>
+    <string name="custom_url_scheme">io.av0idD4rk.ailibrary</string>
+</resources>
