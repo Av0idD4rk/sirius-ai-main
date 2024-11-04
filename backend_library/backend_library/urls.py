@@ -23,6 +23,6 @@ from backend_library import settings
 
 urlpatterns = [
                   path('admin/', admin.site.urls),
-                  path('api/v1/', include('main.urls')),
-                  path('api/v1/', include('authen.urls'))
+                  path('', include('main.urls')),
+                  path('', include('authen.urls'))
               ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
