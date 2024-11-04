@@ -30,6 +30,6 @@ services:
     networks:
       - dev
     environment:
-      - NEXT_PUBLIC_API_URL=http://backend:8000/api/v1/
+      - NEXT_PUBLIC_API_URL=http://backend:8000
     expose:
       - "3000"
