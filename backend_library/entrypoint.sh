@@ -6,7 +6,7 @@ echo "Making database migrations"
 python manage.py makemigrations
 # Run migrations
 echo "Applying database migrations..."
-python manage.py migrate
+python manage.py migrate --run-syncdb
 
 # Start the Django server
 echo "Starting Django server..."
