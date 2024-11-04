@@ -1,8 +1,14 @@
 FROM node:alpine as build
 
+COPY wait-for-it.sh /wait-for-it.sh
+RUN chmod +x /wait-for-it.sh
+
 COPY package.json package.json
 RUN npm install
 COPY . .
+
+RUN /wait-for-it.sh backend:8000 -- npm run build
+
 RUN npm run build
 
 FROM nginx:stable-alpine
