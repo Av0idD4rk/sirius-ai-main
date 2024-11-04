@@ -19,12 +19,12 @@ services:
       context: ./backend_library
     networks:
       - dev
+    expose:
+      - "8000"
 
   frontend:
     build:
       context: ./frontend_library
-      args:
-        NEXT_PUBLIC_API_URL: http://backend:8000
     depends_on:
       - backend
     networks:
