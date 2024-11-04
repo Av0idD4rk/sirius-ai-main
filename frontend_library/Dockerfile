@@ -7,7 +7,7 @@ COPY package.json package.json
 RUN npm install
 COPY . .
 
-RUN ./wait-for-it.sh backend:8000 -- npm run build
+RUN apk add --no-cache bash && ./wait-for-it.sh backend:8000 -- npm run build
 
 RUN npm run build
 
