@@ -26,9 +26,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.getenv('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['localhost','192.168.1.41','wood-dose.gl.at.ply.gg','147.185.221.23','23.ip.gl.ply.gg']
+ALLOWED_HOSTS = ['*']
 
 # Application definition
 
