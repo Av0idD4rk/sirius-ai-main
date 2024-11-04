@@ -15,12 +15,16 @@ services:
       - dev
 
   backend:
+    env_file:
+      - back.env
     build:
       context: ./backend_library
     networks:
       - dev
 
   frontend:
+    env_file:
+      - web.env
     build:
       context: ./frontend_library
     networks:
