@@ -4,6 +4,7 @@ import QuestionComponent from './Question';
 import Result from './Result';
 import Loader from './Loader';
 import {AuthActions} from "@/lib/auth/utils";
+import withAuth from "@/components/auth/withAuth";
 
 
 interface AnswerOption {
@@ -21,7 +22,7 @@ interface QuizProps {
     bookId: number;
 }
 
-export default function QuizComponent({bookId}: QuizProps) {
+function QuizComponent({bookId}: QuizProps) {
     const [questions, setQuestions] = useState<Question[]>([]);
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
     const [score, setScore] = useState(0);
@@ -60,7 +61,7 @@ export default function QuizComponent({bookId}: QuizProps) {
     };
 
     return (
-        <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100 p-4">
+        <div className="flex flex-col items-center justify-center min-h-screen p-4">
             {isLoading ? (
                 <Loader />
             ) : isQuizFinished ? (
@@ -74,3 +75,5 @@ export default function QuizComponent({bookId}: QuizProps) {
         </div>
     );
 }
+
+export default withAuth(QuizComponent);

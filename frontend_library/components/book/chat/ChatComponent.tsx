@@ -7,6 +7,7 @@ import {Message} from '@/lib/types';
 import {AuthActions} from "@/lib/auth/utils";
 import {useRouter} from "next/navigation";
 import {v4} from "uuid";
+import withAuth from "@/components/auth/withAuth";
 
 interface ChatComponentProps {
     bookId: number;
@@ -128,6 +129,6 @@ const ChatComponent: React.FC<ChatComponentProps> = ({bookId}) => {
     );
 };
 
-export default ChatComponent;
+export default withAuth(ChatComponent);
 
 

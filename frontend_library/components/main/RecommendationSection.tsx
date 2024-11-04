@@ -14,7 +14,7 @@ interface RecommendationSectionProps {
 
 const RecommendationSection: React.FC<RecommendationSectionProps> = ({ books }) => {
     return (
-        <section className="mt-5 w-full">
+        <section className="mt- w-full">
             <h2 className="text-xl font-bold text-center text-black mt-7 max-sm:ml-0">
                 Рекомендации дня
             </h2>

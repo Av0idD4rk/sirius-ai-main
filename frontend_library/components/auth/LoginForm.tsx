@@ -41,7 +41,7 @@ const LoginForm = () => {
                 Вход
             </h1>
             <form onSubmit={handleSubmit(onSubmit)}>
-                <InputField placeholder="Логин/Email" id="usernameEmail" {...register("username", {required: true})}/>
+                <InputField placeholder="Логин" id="username" {...register("username", {required: true})}/>
                 {errors.username && (
                     <span className="text-xs text-red-600">Требуется имя пользователя</span>
                 )}

@@ -1,5 +1,5 @@
 import React from "react";
-import PdfReactPdf from "@/components/book/read/BookViewer";
+import BookViewer from "@/components/book/read/BookViewer1";
 
 export async function generateStaticParams() {
     const books = await fetch(process.env.BACKEND_IP_ADDRESS + "/api/v1/books/", {
@@ -22,7 +22,7 @@ export default async function ReadPage({params}: ReadPageProps) {
 
     return (
         <>
-            <PdfReactPdf bookId={bookId}/>
+            <BookViewer bookId={bookId}/>
         </>
 
     )

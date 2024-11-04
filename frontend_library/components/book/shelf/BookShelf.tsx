@@ -5,6 +5,7 @@ import SearchBar from '@/components/book/shelf/SearchBar';
 import BookGrid from '@/components/book/shelf/BookGrid';
 import { Book } from '@/lib/types';
 import {useRouter} from "next/navigation";
+import withAuth from "@/components/auth/withAuth";
 
 const BookShelf: React.FC = () => {
     const [searchTerm, setSearchTerm] = useState<string>('');
@@ -50,7 +51,7 @@ const BookShelf: React.FC = () => {
     );
 };
 
-export default BookShelf;
+export default withAuth(BookShelf);
 
 const BackMark = ({props}: any) => {
     return (
