@@ -5,7 +5,7 @@ RUN npm install
 
 COPY . .
 
-RUN npm run build && npx tailwindcss -o build.css --minify
+RUN npx tailwindcss -o build.css --minify && npm run build
 
 FROM nginx:stable-alpine
 
