@@ -131,7 +131,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL = 'authen.User'
 
-MEDIA_URL = '/media/'
+MEDIA_URL = '/api/v1/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
 SIMPLE_JWT = {
