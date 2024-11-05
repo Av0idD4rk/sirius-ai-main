@@ -2,7 +2,7 @@ import React from "react";
 import ChatComponent from "@/components/book/chat/ChatComponent";
 
 export async function generateStaticParams() {
-    const books = await fetch(process.env.NEXT_PUBLIC_API_URL+ "/books/", {
+    const books = await fetch(process.env.NEXT_PUBLIC_API_URL+ "/api/v1/books/", {
         method: "GET",
     }).then((res) => res.json());
 
