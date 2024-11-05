@@ -1,3 +1,5 @@
+version: "3.8"
+
 networks:
   dev:
 
@@ -19,16 +21,10 @@ services:
       context: ./backend_library
     networks:
       - dev
-    ports:
-      - "8000:8000"
 
 
   frontend:
     build:
       context: ./frontend_library
-    depends_on:
-      - backend
     networks:
       - dev
-    environment:
-      - NEXT_PUBLIC_API_URL=http://backend:8000
