@@ -43,3 +43,5 @@ export const fetcher = async (url: string): Promise<any> => {
     const client = await api();
     return client.get(url).json();
 };
+
+export const fetcherpost = async (url: string): Promise<any> => {}

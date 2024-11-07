@@ -8,6 +8,8 @@ import {pdfjs} from "react-pdf";
 import {AuthActions} from "@/lib/auth/utils";
 import {useRouter} from "next/navigation";
 import {ArrowLeftIcon, ArrowRightIcon, ChevronLeftIcon} from "@heroicons/react/16/solid";
+import useSWR from "swr";
+import {fetcher} from "@/lib/auth/fetcher";
 
 pdfjs.GlobalWorkerOptions.workerSrc = `//unpkg.com/pdfjs-dist@${pdfjs.version}/build/pdf.worker.min.mjs`;
 
@@ -18,28 +20,14 @@ export interface PdfProps {
 export default function PdfReactPdf({bookId}: PdfProps) {
     const [pageNumber, setPageNumber] = useState(1);
     const [numPages, setNumPages] = useState(1);
-    const [isLoading, setIsLoading] = useState(true);
     const [src, setSrc] = useState<string>();
+    const {data, isLoading} = useSWR('/api/v1/books/' + bookId + '/read/', fetcher)
+    setSrc(data);
     const router = useRouter()
     const onBack = () => {
         router.back();
     }
-    useEffect(() => {
-        fetchPdf()
-    })
 
-    async function fetchPdf() {
-        const accessToken = await AuthActions().getToken("access")
-        const response = await fetch(process.env.BACKEND_IP_ADDRESS + "/api/v1/books/" + bookId + "/read/", {
-            method: "GET",
-            headers: {
-                "Authorization": "Bearer " + accessToken
-            }
-        }).then((res) => res.json())
-        setSrc(process.env.BACKEND_IP_ADDRESS + response);
-        setIsLoading(false);
-
-    }
 
     const onDocumentLoadSuccess = ({numPages}: { numPages: number }) => {
         setNumPages(numPages);

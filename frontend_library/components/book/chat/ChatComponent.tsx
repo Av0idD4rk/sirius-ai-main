@@ -12,14 +12,13 @@ import withAuth from "@/components/auth/withAuth";
 interface ChatComponentProps {
     bookId: number;
 }
-
+//TODO: тут вообще всё, надо подумать
 const ChatComponent: React.FC<ChatComponentProps> = ({bookId}) => {
     const [messages, setMessages] = useState<Message[]>([]);
     const [threadId, setThreadId] = useState('');
     const [isLoading, setIsLoading] = useState(true);
     const navigate = useRouter()
     const messagesEndRef = useRef<HTMLDivElement>(null);
-
     useEffect(() => {
         fetchThreadId().then((threadId) =>
             fetchMessages(threadId));
