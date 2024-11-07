@@ -12,7 +12,7 @@ import {fetcher} from "@/lib/auth/fetcher";
 const BookShelf: React.FC = () => {
     const [searchTerm, setSearchTerm] = useState<string>('');
     const [books, setBooks] = useState<Book[]>([]);
-    const {data, isLoading} = useSWR('/api/v1/books',fetcher);
+    const {data, isLoading} = useSWR('/api/v1/books/',fetcher);
     setBooks(data);
     const navigate = useRouter()
     const onGoBack = () => {
