@@ -32,7 +32,6 @@ function QuizComponent({bookId}: QuizProps) {
     useEffect(() => {
         fetchQuestions()
     }, []);
-    //TODO: переделать пост фетчем на пост свр
     const fetchQuestions = async () => {
         const accessToken = await AuthActions().getToken("access")
         fetch(process.env.BACKEND_IP_ADDRESS+"/api/v1/ai/books/"+bookId+"/test/",{

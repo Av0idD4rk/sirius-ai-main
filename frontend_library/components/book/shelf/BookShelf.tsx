@@ -6,14 +6,22 @@ import BookGrid from '@/components/book/shelf/BookGrid';
 import { Book } from '@/lib/types';
 import {useRouter} from "next/navigation";
 import withAuth from "@/components/auth/withAuth";
-import useSWR from "swr";
-import {fetcher} from "@/lib/auth/fetcher";
 
 const BookShelf: React.FC = () => {
     const [searchTerm, setSearchTerm] = useState<string>('');
     const [books, setBooks] = useState<Book[]>([]);
-    const {data, isLoading} = useSWR('/api/v1/books',fetcher);
-    setBooks(data);
+    useEffect(() => {
+        const fetchBooks = async () => {
+            try {
+                const response = await fetch(process.env.BACKEND_IP_ADDRESS+'/api/v1/books/');
+                const data = await response.json();
+                setBooks(data);
+            } catch (error) {
+                console.error('Error fetching books:', error);
+            }
+        };
+        fetchBooks();
+    }, []);
     const navigate = useRouter()
     const onGoBack = () => {
         navigate.back()
@@ -22,7 +30,7 @@ const BookShelf: React.FC = () => {
         book.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
         book.author.toLowerCase().includes(searchTerm.toLowerCase())
     );
-    if (isLoading) return <p>Loading...</p>;
+
     return (
         <main className="flex flex-col items-center px-9 pt-14 pb-24 mx-auto w-full bg-white max-w-[480px] rounded-[30px] max-sm:pt-8 max-sm:px-3.5 max-sm:mt-0">
             <header className="flex gap-10 text-2xl font-bold text-center text-black w-full">

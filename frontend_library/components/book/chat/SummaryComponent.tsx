@@ -10,7 +10,7 @@ import {v4} from "uuid";
 interface ChatComponentProps {
     bookId: number;
 }
-//TODO: тоже надо подумать как чать реализовать
+
 const ChatComponent: React.FC<ChatComponentProps> = ({bookId}) => {
     const [messages, setMessages] = useState<Message[]>([]);
     const navigate = useRouter()

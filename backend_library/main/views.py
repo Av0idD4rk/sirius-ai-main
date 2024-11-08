@@ -34,7 +34,7 @@ class BookListView(generics.ListAPIView):
     serializer_class = BookMiniSerializer
 
 
-@permission_classes([IsAuthenticated])
+@permission_classes([IsAuthenticatedOrReadOnly])
 class BookDetailView(generics.RetrieveAPIView):
     queryset = Book.objects.all()
     serializer_class = BookSerializer

@@ -1,7 +1,5 @@
 import React, {useEffect, useState} from 'react';
 import {AuthActions} from "@/lib/auth/utils";
-import useSWR from "swr";
-import {fetcher} from "@/lib/auth/fetcher";
 
 interface BookDescriptionProps {
     title: string;
@@ -12,11 +10,20 @@ interface BookDescriptionProps {
 }
 
 const BookDescription: React.FC<BookDescriptionProps> = ({title, author, rating, description, bookId}) => {
+    const [isLoading, setIsLoading] = useState(true);
     const [isFavorite, setIsFavorite] = useState(false);
-    const {data, isLoading} = useSWR('/api/v1/books/'+bookId+"/favorite/",fetcher)
-    setIsFavorite(data.is_favorite)
+    useEffect(()=>{
+        AuthActions().getToken("access").then((accessToken) =>
+        {
+            fetch(process.env.BACKEND_IP_ADDRESS + "/api/v1/books/" + bookId + "/favorite/", {
+                method: "GET",
+                headers: {
+                    "Authorization": "Bearer " + accessToken
+                }
+            }).then((res) => res.json()).then((data)=>{setIsFavorite(data.is_favorite); setIsLoading(false);});
+        })
+    })
 
-    //TODO: переделать пост фетчем на пост свр
     const toggleFavorite = async () => {
         if (isFavorite){
             setIsFavorite(false);
