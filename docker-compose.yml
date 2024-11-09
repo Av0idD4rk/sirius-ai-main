@@ -5,11 +5,12 @@ services:
   nginx:
     image: nginx:stable-alpine
     ports:
-      - "80:80"
+      - "443:443"
     depends_on:
       - backend
       - frontend
     volumes:
+      - '/etc/nginx/certs:/etc/nginx/certs'
       - './nginx.conf:/etc/nginx/nginx.conf'
       - './backend_library/media:/opt/media'
     networks:
