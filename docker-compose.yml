@@ -1,6 +1,7 @@
 networks:
   dev:
-
+volumes:
+  postgres:
 services:
   nginx:
     image: nginx:stable-alpine
@@ -9,6 +10,7 @@ services:
     depends_on:
       - backend
       - frontend
+      - db
     volumes:
       - '/etc/nginx/certs:/etc/nginx/certs'
       - './nginx.conf:/etc/nginx/nginx.conf'
@@ -16,11 +18,24 @@ services:
     networks:
       - dev
 
+  db:
+    image: postgres:alpine
+    env_file:
+      - ".env"
+    networks:
+      - dev
+    volumes:
+      - 'postgres:/var/lib/postgresql/data'
+
   backend:
     build:
       context: ./backend_library
     networks:
       - dev
+    depends_on:
+      - db
+    env_file:
+      - ".env"
 
 
   frontend:
@@ -28,3 +43,5 @@ services:
       context: ./frontend_library
     networks:
       - dev
+    env_file:
+      - ".env"
