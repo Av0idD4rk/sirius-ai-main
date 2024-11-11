@@ -8,10 +8,10 @@ const BookShelf: React.FC = () => {
         router.push("/books");
     }
     const books = [
-        { id: '2', image: process.env.BACKEND_IP_ADDRESS+"/media/covers/dostoevsky.jpg" },
-        { id: '3', image: process.env.BACKEND_IP_ADDRESS+"/media/covers/otcy-i-dety.jpg" },
-        { id: '4', image: process.env.BACKEND_IP_ADDRESS+"/media/covers/gore-ot-uma.jpg" },
-        { id: '5', image: process.env.BACKEND_IP_ADDRESS+"/media/covers/revisor.jpg" },
+        { id: '2', image: "/media/covers/dostoevsky.jpg" },
+        { id: '3', image: "/media/covers/otcy-i-dety.jpg" },
+        { id: '4', image: "/media/covers/gore-ot-uma.jpg" },
+        { id: '5', image: "/media/covers/revisor.jpg" },
     ];
 
     return (

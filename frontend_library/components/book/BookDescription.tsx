@@ -15,7 +15,7 @@ const BookDescription: React.FC<BookDescriptionProps> = ({title, author, rating,
     useEffect(()=>{
         AuthActions().getToken("access").then((accessToken) =>
         {
-            fetch(process.env.BACKEND_IP_ADDRESS + "/api/v1/books/" + bookId + "/favorite/", {
+            fetch("/api/v1/books/" + bookId + "/favorite/", {
                 method: "GET",
                 headers: {
                     "Authorization": "Bearer " + accessToken
@@ -31,7 +31,7 @@ const BookDescription: React.FC<BookDescriptionProps> = ({title, author, rating,
             setIsFavorite(true);
         }
         const accessToken = await AuthActions().getToken("access")
-        await fetch(process.env.BACKEND_IP_ADDRESS + "/api/v1/books/" + bookId + "/favorite/", {
+        await fetch("/api/v1/books/" + bookId + "/favorite/", {
             method: "POST",
             headers:{
                 "Authorization": "Bearer " + accessToken

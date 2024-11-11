@@ -33,7 +33,7 @@ const ChatComponent: React.FC<ChatComponentProps> = ({bookId}) => {
     };
     const fetchThreadId = async () => {
         const accessToken = await AuthActions().getToken("access")
-        const response = await fetch(process.env.BACKEND_IP_ADDRESS + "/api/v1/ai/threads/", {
+        const response = await fetch("/api/v1/ai/threads/", {
             method: "POST",
             headers: {
                 "Authorization": "Bearer " + accessToken,
@@ -47,7 +47,7 @@ const ChatComponent: React.FC<ChatComponentProps> = ({bookId}) => {
     }
     const fetchMessages = async (threadId: string) => {
         const accessToken = await AuthActions().getToken("access")
-        const response = await fetch(process.env.BACKEND_IP_ADDRESS + "/api/v1/ai/threads/"+threadId+"/messages/", {
+        const response = await fetch("/api/v1/ai/threads/"+threadId+"/messages/", {
             method: "GET",
             headers:{
                 "Authorization": "Bearer " + accessToken
@@ -69,7 +69,7 @@ const ChatComponent: React.FC<ChatComponentProps> = ({bookId}) => {
         // @ts-ignore
         setMessages((prevMessages) => [...prevMessages, assistantMessage]);
 
-        const apiResponse = await fetch(`${process.env.BACKEND_IP_ADDRESS}/api/v1/ai/threads/${threadId}/messages/`, {
+        const apiResponse = await fetch(`/api/v1/ai/threads/${threadId}/messages/`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

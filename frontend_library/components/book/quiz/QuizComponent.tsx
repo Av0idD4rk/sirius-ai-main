@@ -34,7 +34,7 @@ function QuizComponent({bookId}: QuizProps) {
     }, []);
     const fetchQuestions = async () => {
         const accessToken = await AuthActions().getToken("access")
-        fetch(process.env.BACKEND_IP_ADDRESS+"/api/v1/ai/books/"+bookId+"/test/",{
+        fetch("/api/v1/ai/books/"+bookId+"/test/",{
             method: "POST",
             headers:{
                 "Authorization": "Bearer " + accessToken

@@ -34,7 +34,7 @@ const ChatComponent: React.FC<ChatComponentProps> = ({bookId}) => {
         // @ts-ignore
         setMessages((prevMessages) => [...prevMessages, assistantMessage]);
 
-        const apiResponse = await fetch(`${process.env.BACKEND_IP_ADDRESS}/api/v1/ai/books/${bookId}/summarize/`, {
+        const apiResponse = await fetch(`/api/v1/ai/books/${bookId}/summarize/`, {
             method: "GET",
             headers: {
                 "Authorization": "Bearer " + accessToken

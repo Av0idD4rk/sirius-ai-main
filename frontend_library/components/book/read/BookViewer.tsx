@@ -30,13 +30,13 @@ export default function PdfReactPdf({bookId}: PdfProps) {
 
     async function fetchPdf() {
         const accessToken = await AuthActions().getToken("access")
-        const response = await fetch(process.env.BACKEND_IP_ADDRESS + "/api/v1/books/" + bookId + "/read/", {
+        const response = await fetch("/api/v1/books/" + bookId + "/read/", {
             method: "GET",
             headers: {
                 "Authorization": "Bearer " + accessToken
             }
         }).then((res) => res.json())
-        setSrc(process.env.BACKEND_IP_ADDRESS + response);
+        setSrc(response);
         setIsLoading(false);
 
     }

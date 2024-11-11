@@ -13,7 +13,7 @@ const BookShelf: React.FC = () => {
     useEffect(() => {
         const fetchBooks = async () => {
             try {
-                const response = await fetch(process.env.BACKEND_IP_ADDRESS+'/api/v1/books/');
+                const response = await fetch('/api/v1/books/');
                 const data = await response.json();
                 setBooks(data);
             } catch (error) {

@@ -3,7 +3,7 @@ import wretch from "wretch";
 import {Preferences} from '@capacitor/preferences';
 
 // Base API setup for making HTTP requests
-const api = wretch(process.env.BACKEND_IP_ADDRESS + "/api/v1");
+const api = wretch("/api/v1");
 /**
  * Stores a token in cookies.
  * @param {string} token - The token to be stored.
