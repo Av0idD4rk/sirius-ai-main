@@ -1,7 +1,7 @@
 #!/bin/bash
 
-chmod +x ./wait-for-sh.sh
-bash wait-for-sh.sh db:5432
+chmod +x ./wait-for-it.sh
+bash wait-for-it.sh db:5432
 
 # Exit immediately if a command exits with a non-zero status
 set -e
