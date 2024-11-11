@@ -33,14 +33,13 @@ const BookViewer: React.FC<BookViewerProps> = ({bookId}) => {
     })
     async function fetchPdf() {
         const accessToken = await AuthActions().getToken("access")
-        const response = await fetch(process.env.BACKEND_IP_ADDRESS + "/api/v1/books/" + bookId + "/read/", {
+        const response = await fetch("/api/v1/books/" + bookId + "/read/", {
             method: "GET",
             headers: {
                 "Authorization": "Bearer " + accessToken
             }
         }).then((res) => res.json())
-        console.log(response)
-        setBookUrl(process.env.BACKEND_IP_ADDRESS + response);
+        setBookUrl(response);
 
 
     }
